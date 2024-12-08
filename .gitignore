@@ -1,0 +1,12 @@
+# Ignore Python virtual environment folder
+.venv/
+
+# Ignore all input.txt files in any subdirectory
+# Including the small testing inputs in the problem description
+**/input.txt
+**/input2.txt
+
+# Ignore additional temporary or unwanted files
+*.pyc
+__pycache__/
+.DS_Store
