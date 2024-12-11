@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 # Get single line input
 def parseInput(filename):
     with open(filename, 'r') as file:
@@ -31,15 +29,9 @@ def recursiveBlink(n, depth=0):
     dpList[(n, depth)] = result
     return result
 
-
 numArray = parseInput('input.txt')
-
-
 totalSum = 0
 for n in numArray:
     totalSum += recursiveBlink(n, 0)
 
 print(totalSum)
-
-
-

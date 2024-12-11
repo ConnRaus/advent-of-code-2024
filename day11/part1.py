@@ -25,13 +25,9 @@ def blink(lst):
             newLst.append(str(int(ele)*2024))
     return newLst
 
-
 numArray = parseInput('input.txt')
 for i in range(0,25):
     print("Blink #", i+1)
     numArray = blink(numArray)
 
 print(len(numArray))
-
-
-
