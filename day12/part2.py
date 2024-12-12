@@ -18,9 +18,9 @@ def isInBounds(pos, dims):
     return True
 
 def bfsNeighbors(pos, searchLetter):
+    # returns perimeter
     x, y = pos
     if not isInBounds((x, y), getDimensions(grid)):
-        # Out of bounds contributes 1 to perimeter
         return 1
 
     letter = grid[y][x]

@@ -11,10 +11,8 @@ def getDimensions(grid):
     return len(grid[0]), len(grid)
 
 def isInBounds(pos, dims):
-    x = pos[0]
-    y = pos[1]
-    xMax = dims[0]
-    yMax = dims[1]
+    x, y = pos
+    xMax, yMax = dims
     if x < 0 or x >= xMax or y < 0 or y >= yMax:
         return False
     return True
