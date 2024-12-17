@@ -70,8 +70,8 @@ def findAllShortestPaths(maze, start, end):
     pq = []
     heapq.heappush(pq, (0, start[0], start[1], 'E'))  # cost, x, y, direction
 
-    costSoFar = {(start[0], start[1], 'E'): 0}
-    cameFrom = {}  # Store state → list of parents
+    costSoFar = {(start[0], start[1], 'E'): 0} # Start East
+    cameFrom = {} 
     minCost = float('inf')
     endStates = []  # Track all end states with minimal cost
 
@@ -87,7 +87,7 @@ def findAllShortestPaths(maze, start, end):
                 endStates.append((x, y, direction))
             continue
 
-        # Explore actions
+        # Test Possibilities
         for action in ['MOVE', 'LEFT', 'RIGHT']:
             if action == 'MOVE':
                 dx, dy = directions[direction]
