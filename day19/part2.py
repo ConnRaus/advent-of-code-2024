@@ -25,6 +25,7 @@ def getTargetUsingSegments(segments, target, segmentList=None):
     total = 0
     for segment in segments:
         if target.startswith(segment):
+            # recursively break down target over and over
             ways = getTargetUsingSegments(segments, target[len(segment):], segmentList)
             total += ways # dont return immediately to count all ways
     # didnt work
