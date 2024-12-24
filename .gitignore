@@ -5,6 +5,7 @@
 # Including the small testing inputs in the problem description
 **/input.txt
 **/input2.txt
+**/c*
 
 # Ignore additional temporary or unwanted files
 *.pyc
