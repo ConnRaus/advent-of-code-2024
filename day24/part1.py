@@ -36,7 +36,7 @@ def solveGate(gate):
         states[w2] = solveGate(gates[w2])   
     return operations[op](states[w1], states[w2])
 
-# gates need to be reversed for some reason
+# gates need to be reversed for little endian
 zGates = reversed(sorted([x for x in gates.keys() if x.startswith('z')]))
 output = ''
 for gateName in zGates:
