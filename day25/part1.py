@@ -1,57 +1,54 @@
 def parseInput(filename):
-    savedInput = []
+    parsedLines = []
     f = open(filename, "r")
     lines = f.readlines()
     for line in lines:
-        appendThis = line.replace('\n', '').strip()
-        if len(appendThis) != 0:
-            savedInput.append(appendThis)
-    return savedInput
-
-locks = []
-keys = []
+        cleanline = line.replace('\n', '').strip()
+        if len(cleanline) != 0:
+            parsedLines.append(cleanline)
+    return parsedLines
 
 def splitLocksKeys(input):
+    locks = []
+    keys = []
     while len(input) != 0:
-        temp = []
+        block = []
         for _ in range(7):
-            piece = input.pop(0)
-            temp.append(piece)
-        if temp[0] == '#####':
-            locks.append(temp)
+            line = input.pop(0)
+            block.append(line)
+
+        if block[0] == '#####':
+            locks.append(block)
         else:
-            keys.append(temp)
+            keys.append(block)
+
+    return locks, keys
         
-def convertToNumList(lockkey):
-    temp = []
+def convertToHeightList(lockkey):
+    heightList = []
     for y in range(0,len(lockkey[0])):
-        string = ''
+        columnString = ''
         for x in range(0, len(lockkey)):
-            string += lockkey[x][y]
-        temp.append(string.count('#')-1)
-    return temp
+            columnString += lockkey[x][y]
+        heightList.append(columnString.count('#')-1)
+    return heightList
 
-
-input = parseInput('input.txt')
-splitLocksKeys(input)
-
-lockNumbers = []
-for lock in locks:
-    lockNumbers.append(convertToNumList(lock))
-
-keyNumbers = []
-for key in keys:
-    keyNumbers.append(convertToNumList(key))
-
-def checkLockInKey(lock, key):
+def doesKeyFitLock(lock, key):
     for i in range(0,len(lock)):
         if lock[i] + key[i] > 5:
             return False
     return True
 
+
+input = parseInput('input.txt')
+locks, keys = splitLocksKeys(input)
+
+lockHeights = [convertToHeightList(lock) for lock in locks]
+keyHeights = [convertToHeightList(key) for key in keys]
+
 total = 0
-for lock in lockNumbers:
-    for key in keyNumbers:
-        total += checkLockInKey(lock, key)
+for lock in lockHeights:
+    for key in keyHeights:
+        total += doesKeyFitLock(lock, key)
 print(total)
 
